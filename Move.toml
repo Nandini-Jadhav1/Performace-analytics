@@ -1,0 +1,16 @@
+[package]
+name = "performace-analytics"
+version = "1.0.0"
+authors = []
+
+[addresses]
+MyModule="0x635ffbaf51234bd476fc2a71f2694aca7da2f8f338e829be12915ea594344a7f"
+
+[dev-addresses]
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-framework.git"
+rev = "mainnet"
+subdir = "aptos-framework"
+
+[dev-dependencies]

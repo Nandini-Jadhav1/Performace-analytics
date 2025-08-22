@@ -1,0 +1,27 @@
+module MyModule::PerformanceAnalytics {
+
+    use std::signer;
+    use std::string::{String, utf8};
+
+    /// Struct to store performance data for each account
+    struct Performance has key {
+        score: u64,        // performance score
+        remarks: String,   // feedback remarks
+    }
+
+    /// Function to initialize performance for a user
+    public fun init_performance(account: &signer, score: u64, remarks: String) {
+        let data = Performance {
+            score,
+            remarks,
+        };
+        move_to(account, data);
+    }
+
+    /// Function to update performance score of a user
+    public fun update_score(account: &signer, new_score: u64, new_remarks: String) acquires Performance {
+        let performance = borrow_global_mut<Performance>(signer::address_of(account));
+        performance.score = new_score;
+        performance.remarks = new_remarks;
+    }
+}
